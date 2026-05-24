@@ -151,16 +151,18 @@
         /* PROJECTS */
         .projects { padding: 8rem 2rem; }
         .projects-container { max-width: 1280px; margin: 0 auto; }
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 2rem; }
-        .project-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 2rem; align-items: stretch; grid-auto-rows: 1fr; }
+        .project-card { display: flex; flex-direction: column; min-height: 100%; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; transition: all 0.3s ease; position: relative; overflow: hidden; }
         .project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg,#3b82f6,#8b5cf6,#ec4899); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; }
         .project-card:hover::before { transform: scaleX(1); }
         .project-card:hover { background: var(--bg-card-hover); border-color: var(--border-hover); transform: translateY(-8px); }
         .project-icon { font-size: 2.5rem; margin-bottom: 1.5rem; }
         .project-card h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: -0.02em; }
         .project-card p { color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem; }
+        .project-card .desc { display: flex; flex-direction: column; min-height: 22rem; }
+        .project-card .desc p { flex: 1; }
         .project-desc--spacious { line-height: 1.95; }
-        .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: auto; }
         .tag { padding: 0.3rem 0.8rem; background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2); border-radius: 6px; font-size: 0.8rem; font-weight: 500; color: var(--accent); }
 
         /* CAROUSEL */
