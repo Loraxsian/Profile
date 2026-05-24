@@ -420,6 +420,21 @@
                 font-size: 20px;
             }
         }
+
+        @keyframes contactZoomIn {
+            from {
+                transform: scale(0.92);
+                opacity: 0.65;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .contact.zoom-in {
+            animation: contactZoomIn 0.45s ease-out;
+        }
     </style>
 </head>
 <body>
@@ -445,11 +460,11 @@
         <ul class="nav-menu" id="navMenu">
             <li><a href="#about" data-i18n="nav.about">About</a></li>
             <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
-            <li><a href="#projects" data-i18n="nav.work">Work</a></li>
             <li><a href="#certificates" data-i18n="nav.certificates">Certificates</a></li>
             <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+            <li><a href="#projects" data-i18n="nav.work">Work</a></li>
             <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
-            <li><a href="#contact" class="nav-cta" data-i18n="nav.cta">Let's Talk</a></li>
+            <li><a href="#contact" class="nav-cta" id="letsTalkBtn" data-i18n="nav.cta">Let's Talk</a></li>
         </ul>
         <div class="nav-controls">
             <button class="toggle-btn" id="langToggle" aria-label="Toggle language">
@@ -1066,6 +1081,19 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 });
+
+const letsTalkBtn = document.getElementById('letsTalkBtn');
+if (letsTalkBtn) {
+    letsTalkBtn.addEventListener('click', function(e) {
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+            contactSection.classList.remove('zoom-in');
+            void contactSection.offsetWidth;
+            contactSection.classList.add('zoom-in');
+            setTimeout(() => contactSection.classList.remove('zoom-in'), 500);
+        }
+    });
+}
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
