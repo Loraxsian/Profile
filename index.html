@@ -133,8 +133,8 @@
         /* CERTIFICATES */
         .certificates { padding: 8rem 2rem; background: linear-gradient(180deg,transparent,rgba(59,130,246,0.02),transparent); }
         .certificates-container { max-width: 1280px; margin: 0 auto; }
-        .certificates-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 2rem; align-items: start; grid-auto-rows: 1fr; }
-        .certificate-card { display: flex; flex-direction: column; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .certificates-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 2rem; align-items: stretch; grid-auto-rows: 1fr; }
+        .certificate-card { display: flex; flex-direction: column; gap: 0.8rem; height: 100%; min-height: 0; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; transition: all 0.3s ease; position: relative; overflow: hidden; }
         .certificate-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg,#3b82f6,#8b5cf6,#ec4899); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; }
         .certificate-card:hover::before { transform: scaleX(1); }
         .certificate-card:hover { background: var(--bg-card-hover); border-color: var(--border-hover); transform: translateY(-8px); }
@@ -151,16 +151,17 @@
         /* PROJECTS */
         .projects { padding: 8rem 2rem; }
         .projects-container { max-width: 1280px; margin: 0 auto; }
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 2rem; align-items: stretch; grid-auto-rows: 1fr; }
-        .project-card { display: flex; flex-direction: column; min-height: 100%; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 2rem; align-items: stretch; grid-auto-rows: minmax(0, 1fr); }
+        .project-card { display: flex; flex-direction: column; height: 100%; min-height: 0; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; transition: all 0.3s ease; position: relative; overflow: hidden; }
         .project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg,#3b82f6,#8b5cf6,#ec4899); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; }
         .project-card:hover::before { transform: scaleX(1); }
         .project-card:hover { background: var(--bg-card-hover); border-color: var(--border-hover); transform: translateY(-8px); }
+        .project-card .carousel { flex: 0 0 auto; }
         .project-icon { font-size: 2.5rem; margin-bottom: 1.5rem; }
         .project-card h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: -0.02em; }
         .project-card p { color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem; }
-        .project-card .desc { display: flex; flex-direction: column; min-height: 22rem; }
-        .project-card .desc p { flex: 1; }
+        .project-card .desc { display: flex; flex-direction: column; flex: 1; min-height: 22rem; min-height: 0; }
+        .project-card .desc p { flex: 1; min-height: 0; }
         .project-desc--spacious { line-height: 1.95; }
         .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: auto; }
         .tag { padding: 0.3rem 0.8rem; background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2); border-radius: 6px; font-size: 0.8rem; font-weight: 500; color: var(--accent); }
@@ -763,7 +764,7 @@
                     <button class="carousel-btn next">&#8250;</button>
                     <div class="carousel-dots"></div>
                 </div>
-                <div class="desc" style="height:22rem;">
+                <div class="desc">
                     <h3 data-i18n="proj.p1.title">Enterprise DRC & Colocation Backup System</h3>
                     <p data-i18n="proj.p1.desc">Engineered a multi-location DRC architecture featuring secure MikroTik inter-DC connectivity and Proxmox virtualization. This system ensures stable data replication and High Availability with a resilient failover mechanism to guarantee uninterrupted business continuity.</p>
                 </div>
@@ -785,7 +786,7 @@
                     <button class="carousel-btn next">&#8250;</button>
                     <div class="carousel-dots"></div>
                 </div>
-                <div class="desc" style="height:22rem;">
+                <div class="desc">
                     <h3 data-i18n="proj.p2.title">Data Center Monitoring System</h3>
                     <p data-i18n="proj.p2.desc">Implemented a comprehensive monitoring solution using Zabbix with Discord and email notifications for real-time alerts, ensuring prompt response to system issues.</p>
                 </div>
@@ -806,7 +807,7 @@
                     <button class="carousel-btn next">&#8250;</button>
                     <div class="carousel-dots"></div>
                 </div>
-                <div class="desc" style="height:22rem;">
+                <div class="desc">
                     <h3 data-i18n="proj.p3.title">Enterprise Virtualization Infrastructure Implementation</h3>
                     <p data-i18n="proj.p3.desc">Performed server hardware upgrades, initialized Proxmox VE nodes, and deployed a virtualization cluster with centralized resource management and high availability configuration.</p>
                 </div>
@@ -828,7 +829,7 @@
                     <button class="carousel-btn next">&#8250;</button>
                     <div class="carousel-dots"></div>
                 </div>
-                <div class="desc" style="height:22rem;">
+                <div class="desc">
                     <h3 data-i18n="proj.p4.title">Hybrid DRC & HA Miniaturization</h3>
                     <p class="project-desc project-desc--spacious" data-i18n="proj.p4.desc">Built a hybrid DRC & High-Availability (HA) proof-of-concept connecting homelab infrastructure with a Cloud VPS using MikroTik CHR, WireGuard, EoIP, Nginx Proxy Manager, and Syncthing for secure tunneling, traffic distribution, real-time replication, and automated failover.</p>
                 </div>
