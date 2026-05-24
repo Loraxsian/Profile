@@ -159,6 +159,7 @@
         .project-icon { font-size: 2.5rem; margin-bottom: 1.5rem; }
         .project-card h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: -0.02em; }
         .project-card p { color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem; }
+        .project-desc--spacious { line-height: 1.95; }
         .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
         .tag { padding: 0.3rem 0.8rem; background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2); border-radius: 6px; font-size: 0.8rem; font-weight: 500; color: var(--accent); }
 
@@ -812,7 +813,7 @@
                 </div>
                 <div class="desc" style="height:22rem;">
                     <h3 data-i18n="proj.p4.title">Hybrid DRC & HA Miniaturization</h3>
-                    <p data-i18n="proj.p4.desc">Engineered a resilient hybrid DRC and High-Availability (HA) proof-of-concept bridging bare-metal infrastructure with Cloud VPS. Implemented MikroTik CHR with secure tunneling (WireGuard + EoIP) to bypass NAT constraints, utilizing Nginx Proxy Manager for traffic distribution and Syncthing for real-time Docker data replication. Features automated failover mechanism to guarantee 24/7 service continuity.</p>
+                    <p class="project-desc project-desc--spacious" data-i18n="proj.p4.desc">Engineered a resilient hybrid DRC and High-Availability (HA) proof-of-concept bridging bare-metal infrastructure with Cloud VPS. Implemented MikroTik CHR with secure tunneling (WireGuard + EoIP) to bypass NAT constraints, utilizing Nginx Proxy Manager for traffic distribution and Syncthing for real-time Docker data replication. Features automated failover mechanism to guarantee 24/7 service continuity.</p>
                 </div>
                 <div class="project-tags">
                     <span class="tag">MikroTik CHR</span><span class="tag">WireGuard</span>
