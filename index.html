@@ -133,8 +133,8 @@
         /* CERTIFICATES */
         .certificates { padding: 8rem 2rem; background: linear-gradient(180deg,transparent,rgba(59,130,246,0.02),transparent); }
         .certificates-container { max-width: 1280px; margin: 0 auto; }
-        .certificates-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 2rem; }
-        .certificate-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .certificates-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 2rem; align-items: start; grid-auto-rows: 1fr; }
+        .certificate-card { display: flex; flex-direction: column; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; transition: all 0.3s ease; position: relative; overflow: hidden; }
         .certificate-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg,#3b82f6,#8b5cf6,#ec4899); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; }
         .certificate-card:hover::before { transform: scaleX(1); }
         .certificate-card:hover { background: var(--bg-card-hover); border-color: var(--border-hover); transform: translateY(-8px); }
@@ -144,8 +144,8 @@
         .certificate-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
         .cert-issuer { color: var(--accent); font-weight: 600; font-size: 0.9rem; margin-bottom: 0.3rem; }
         .cert-date { color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1rem; }
-        .certificate-card p { color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem; margin-bottom: 1.5rem; }
-        .cert-link { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; transition: all 0.2s ease; }
+        .certificate-card p { color: var(--text-secondary); line-height: 1.7; font-size: 0.95rem; margin-bottom: 1.5rem; }
+        .cert-link { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; transition: all 0.2s ease; margin-top: auto; }
         .cert-link:hover { gap: 0.5rem; }
 
         /* PROJECTS */
