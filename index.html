@@ -4,1599 +4,1257 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Andrian Gilbert Tampubolon - Server & Network Engineer</title>
+    <link rel="icon" type="image/x-icon" href="./image/iconpavi.png">
+        <!-- SEO & Social Preview -->
+        <meta name="description" content="Andrian Gilbert Tampubolon — Server & Network Engineer. Portfolio showcasing data center, virtualization, and network engineering projects including Proxmox clusters, DRC, and monitoring solutions.">
+        <meta name="keywords" content="Server Engineer, Network Engineer, Proxmox, Virtualization, Data Center, DRC, Zabbix, MikroTik">
+        <meta name="robots" content="index, follow">
+
+        <!-- Open Graph -->
+        <meta property="og:title" content="Andrian Gilbert Tampubolon — Server & Network Engineer">
+        <meta property="og:description" content="Portfolio showcasing data center, virtualization, and network engineering projects including Proxmox clusters, DRC, and monitoring solutions.">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="./image/previewshare.png">
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Andrian Gilbert Tampubolon — Server & Network Engineer">
+        <meta name="twitter:description" content="Portfolio showcasing data center, virtualization, and network engineering projects including Proxmox clusters, DRC, and monitoring solutions.">
+        <meta name="twitter:image" content="./image/previewshare.png">
+
+        <!-- JSON-LD structured data -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Andrian Gilbert Tampubolon",
+            "jobTitle": "Server & Network Engineer",
+            "sameAs": ["https://www.linkedin.com/in/andrian-gilbert-tampubolon-586462338/"],
+            "description": "Server & Network Engineer focused on data center, virtualization, and network infrastructure."
+        }
+        </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --bg-dark: #000000;
-            --bg-light: #fafafa;
-            --text-primary: #ffffff;
-            --text-secondary: #a1a1aa;
-            --accent: #3b82f6;
-            --accent-hover: #2563eb;
+            --bg: #000000; --bg-card: rgba(255,255,255,0.03); --bg-card-hover: rgba(255,255,255,0.05);
+            --border: rgba(255,255,255,0.1); --border-hover: rgba(59,130,246,0.3);
+            --text-primary: #ffffff; --text-secondary: #a1a1aa; --accent: #3b82f6; --accent-hover: #2563eb;
+            --navbar-scrolled: rgba(0,0,0,0.8); --mobile-menu-bg: rgba(0,0,0,0.95);
+            --nav-cta-bg: #ffffff; --nav-cta-color: #000000;
+            --btn-primary-bg: #ffffff; --btn-primary-color: #000000;
+            --shadow-btn: rgba(255,255,255,0.2); --timeline-line: rgba(59,130,246,0.5);
+        }
+        [data-theme="light"] {
+            --bg: #f8f9fa; --bg-card: rgba(0,0,0,0.02); --bg-card-hover: rgba(0,0,0,0.04);
+            --border: rgba(0,0,0,0.1); --border-hover: rgba(59,130,246,0.4);
+            --text-primary: #0a0a0a; --text-secondary: #555555; --accent: #2563eb; --accent-hover: #1d4ed8;
+            --navbar-scrolled: rgba(248,249,250,0.85); --mobile-menu-bg: rgba(248,249,250,0.98);
+            --nav-cta-bg: #0a0a0a; --nav-cta-color: #ffffff;
+            --btn-primary-bg: #0a0a0a; --btn-primary-color: #ffffff;
+            --shadow-btn: rgba(0,0,0,0.15); --timeline-line: rgba(59,130,246,0.4);
+        }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text-primary); overflow-x: hidden; transition: background 0.3s ease, color 0.3s ease; }
+
+        /* NAVBAR */
+        .navbar { position: fixed; top: 0; width: 100%; padding: 1.5rem 0; z-index: 1000; transition: all 0.3s ease; }
+        .navbar.scrolled { background: var(--navbar-scrolled); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+        .nav-container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.5px; }
+        .nav-menu { display: flex; list-style: none; gap: 2.5rem; align-items: center; }
+        .nav-menu a { text-decoration: none; color: var(--text-secondary); font-size: 0.9rem; font-weight: 500; transition: color 0.2s ease; letter-spacing: -0.2px; }
+        .nav-menu a:hover { color: var(--text-primary); }
+        .nav-cta { padding: 0.6rem 1.2rem; background: var(--nav-cta-bg); color: var(--nav-cta-color) !important; border-radius: 6px; font-weight: 600; transition: all 0.2s ease; }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 12px var(--shadow-btn); }
+        .nav-controls { display: flex; align-items: center; gap: 0.5rem; }
+        .toggle-btn { display: flex; align-items: center; gap: 0.4rem; padding: 0.45rem 0.85rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; color: var(--text-secondary); font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease; white-space: nowrap; font-family: 'Inter', sans-serif; }
+        .toggle-btn:hover { color: var(--text-primary); border-color: var(--border-hover); background: var(--bg-card-hover); }
+        .toggle-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1001; }
+        .hamburger span { width: 25px; height: 2px; background: var(--text-primary); transition: all 0.3s ease; border-radius: 2px; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(7px,7px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px,-7px); }
+        .mobile-menu-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 999; opacity: 0; transition: opacity 0.3s ease; }
+        .mobile-menu-overlay.active { display: block; opacity: 1; }
+
+        /* HERO */
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; padding: 0 2rem; }
+        .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px); background-size: 50px 50px; mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%); }
+        .hero-content { max-width: 1280px; margin: 0 auto; position: relative; z-index: 1; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2); border-radius: 50px; font-size: 0.85rem; font-weight: 500; margin-bottom: 2rem; animation: fadeInDown 0.8s ease; }
+        .hero-badge .dot { width: 6px; height: 6px; background: #22c55e; border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
+        @keyframes fadeInDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
+        @keyframes fadeInUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+        @keyframes fadeInLeft { from{opacity:0;transform:translateX(-30px)} to{opacity:1;transform:translateX(0)} }
+        .hero h1 { font-size: clamp(2rem,8vw,6rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.05em; margin-bottom: 1.5rem; animation: fadeInUp 0.8s ease 0.2s backwards; }
+        .gradient-text { background: linear-gradient(135deg,#3b82f6,#8b5cf6,#ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; background-size: 200% auto; animation: gradientShift 3s ease infinite; }
+        @keyframes gradientShift { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+        .hero p { font-size: 1.25rem; color: var(--text-secondary); max-width: 600px; line-height: 1.8; margin-bottom: 2.5rem; animation: fadeInUp 0.8s ease 0.4s backwards; }
+        .hero-buttons { display: flex; gap: 1rem; animation: fadeInUp 0.8s ease 0.6s backwards; flex-wrap: wrap; }
+        .btn { padding: 1rem 2rem; border-radius: 8px; font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: all 0.2s ease; display: inline-flex; align-items: center; gap: 0.5rem; justify-content: center; }
+        .btn-primary { background: var(--btn-primary-bg); color: var(--btn-primary-color); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px var(--shadow-btn); }
+        .btn-secondary { background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border); }
+        .btn-secondary:hover { background: var(--bg-card-hover); border-color: rgba(255,255,255,0.2); }
+
+        /* SECTIONS */
+        .about, .experience { padding: 8rem 2rem; max-width: 1280px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 5rem; }
+        .section-label { display: inline-block; padding: 0.4rem 1rem; background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2); border-radius: 50px; font-size: 0.85rem; font-weight: 600; color: var(--accent); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px; }
+        .section-title { font-size: clamp(1.75rem,4vw,3rem); font-weight: 800; letter-spacing: -0.02em; }
+
+        /* ABOUT */
+        .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+        .about-text p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 1.5rem; }
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+        .tech-item { padding: 0.6rem 1.2rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; font-size: 0.9rem; font-weight: 500; transition: all 0.2s ease; }
+        .tech-item:hover { background: var(--bg-card-hover); border-color: rgba(255,255,255,0.2); transform: translateY(-2px); }
+        .stats-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 2rem; }
+        .stat-card { padding: 2rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; transition: all 0.3s ease; }
+        .stat-card:hover { background: var(--bg-card-hover); border-color: var(--border-hover); transform: translateY(-4px); }
+        .stat-number { font-size: 2.5rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem; }
+        .stat-label { color: var(--text-secondary); font-size: 0.95rem; }
+
+        /* TIMELINE */
+        .experience-container { max-width: 900px; margin: 0 auto; }
+        .timeline { position: relative; padding-left: 2rem; }
+        .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg,rgba(59,130,246,0),var(--timeline-line),rgba(59,130,246,0)); }
+        .timeline-item { position: relative; margin-bottom: 3rem; animation: fadeInLeft 0.6s ease; }
+        .timeline-dot { position: absolute; left: -2.5rem; top: 0.5rem; width: 12px; height: 12px; background: var(--accent); border: 3px solid var(--bg); border-radius: 50%; box-shadow: 0 0 0 4px rgba(59,130,246,0.2); }
+        .timeline-content { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; transition: all 0.3s ease; }
+        .timeline-content:hover { background: var(--bg-card-hover); border-color: var(--border-hover); transform: translateX(8px); }
+        .timeline-date { display: inline-block; padding: 0.3rem 0.8rem; background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2); border-radius: 6px; font-size: 0.85rem; font-weight: 600; color: var(--accent); margin-bottom: 1rem; }
+        .timeline-content h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+        .company { color: var(--text-secondary); font-size: 1rem; font-weight: 500; margin-bottom: 1rem; }
+        .timeline-content p { color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem; }
+
+        /* CERTIFICATES */
+        .certificates { padding: 8rem 2rem; background: linear-gradient(180deg,transparent,rgba(59,130,246,0.02),transparent); }
+        .certificates-container { max-width: 1280px; margin: 0 auto; }
+        .certificates-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 2rem; }
+        .certificate-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .certificate-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg,#3b82f6,#8b5cf6,#ec4899); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; }
+        .certificate-card:hover::before { transform: scaleX(1); }
+        .certificate-card:hover { background: var(--bg-card-hover); border-color: var(--border-hover); transform: translateY(-8px); }
+        .cert-icon { font-size: 2.5rem; margin-bottom: 1rem; display: inline-block; animation: float 3s ease-in-out infinite; }
+        .certificate-card .cert-icon img { width: 48px; height: 48px; object-fit: contain; }
+        @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+        .certificate-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+        .cert-issuer { color: var(--accent); font-weight: 600; font-size: 0.9rem; margin-bottom: 0.3rem; }
+        .cert-date { color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1rem; }
+        .certificate-card p { color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem; margin-bottom: 1.5rem; }
+        .cert-link { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; transition: all 0.2s ease; }
+        .cert-link:hover { gap: 0.5rem; }
+
+        /* PROJECTS */
+        .projects { padding: 8rem 2rem; }
+        .projects-container { max-width: 1280px; margin: 0 auto; }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 2rem; }
+        .project-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg,#3b82f6,#8b5cf6,#ec4899); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; }
+        .project-card:hover::before { transform: scaleX(1); }
+        .project-card:hover { background: var(--bg-card-hover); border-color: var(--border-hover); transform: translateY(-8px); }
+        .project-icon { font-size: 2.5rem; margin-bottom: 1.5rem; }
+        .project-card h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: -0.02em; }
+        .project-card p { color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem; }
+        .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .tag { padding: 0.3rem 0.8rem; background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2); border-radius: 6px; font-size: 0.8rem; font-weight: 500; color: var(--accent); }
+
+        /* CAROUSEL */
+        .carousel { position: relative; width: 100%; margin-bottom: 1.5rem; border-radius: 10px; overflow: hidden; background: rgba(0,0,0,0.2); }
+        .carousel-track { display: flex; transition: transform 0.4s ease; }
+        .carousel-track img { min-width: 100%; width: 100%; height: 200px; object-fit: cover; flex-shrink: 0; display: block; }
+        .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.15); color: #fff; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1rem; transition: all 0.2s ease; z-index: 2; padding: 0; line-height: 1; }
+        .carousel-btn:hover { background: rgba(59,130,246,0.7); border-color: rgba(59,130,246,0.5); }
+        .carousel-btn.prev { left: 8px; }
+        .carousel-btn.next { right: 8px; }
+        .carousel-btn.hidden { opacity: 0; pointer-events: none; }
+        .carousel-dots { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; }
+        .carousel-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.4); cursor: pointer; transition: all 0.2s ease; border: none; padding: 0; }
+        .carousel-dot.active { background: #fff; transform: scale(1.2); }
+
+        /* SKILLS */
+        .skills { padding: 8rem 2rem; }
+        .skills-container { max-width: 1280px; margin: 0 auto; }
+        .skills-categories { display: flex; flex-direction: column; gap: 3rem; }
+        .skill-category { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; transition: all 0.3s ease; }
+        .skill-category:hover { border-color: var(--border-hover); }
+        .skill-cat-title { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); margin-bottom: 1.5rem; }
+        .skill-items { display: flex; flex-wrap: wrap; gap: 1rem; }
+        .skill-item { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; padding: 1rem 1.2rem; background: var(--bg); border: 1px solid var(--border); border-radius: 12px; transition: all 0.2s ease; min-width: 80px; cursor: default; }
+        .skill-item:hover { border-color: var(--border-hover); transform: translateY(-4px); background: var(--bg-card-hover); }
+        .skill-item img { width: 36px; height: 36px; object-fit: contain; }
+        .skill-item svg { width: 36px; height: 36px; color: var(--accent); }
+        .skill-item span { font-size: 0.78rem; font-weight: 600; color: var(--text-secondary); text-align: center; white-space: nowrap; }
+        .skill-level { font-size: 0.65rem !important; font-weight: 500 !important; color: var(--accent) !important; background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2); border-radius: 4px; padding: 0.1rem 0.4rem; margin-top: -0.3rem; }
+        .skills-footer { margin-top: 3rem; display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+        .skills-footer p { color: var(--text-secondary); font-size: 1rem; }
+        .skills-linkedin-btn { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.8rem 1.5rem; }
+
+        /* CONTACT */
+        .contact { padding: 8rem 2rem; background: var(--bg); }
+        .contact-wrapper { max-width: 1280px; margin: 0 auto; }
+        .contact-header { margin-bottom: 3rem; }
+        .contact-header .section-label { display: inline-block; padding: 0.4rem 1rem; background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2); border-radius: 50px; font-size: 0.75rem; font-weight: 700; color: var(--accent); letter-spacing: 1.5px; margin-bottom: 1rem; }
+        .contact-header h2 { font-size: clamp(2rem,5vw,4rem); font-weight: 800; letter-spacing: -0.03em; color: var(--text-primary); margin: 0; }
+        .contact-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 3rem; display: grid; grid-template-columns: 1fr auto; gap: 4rem; align-items: center; }
+        .contact-description { font-size: 1.1rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2rem; max-width: 600px; }
+        .contact-details { display: flex; flex-direction: column; gap: 1rem; }
+        .contact-item { display: flex; align-items: center; gap: 0.75rem; font-size: 1rem; color: var(--text-primary); }
+        .contact-svg { color: var(--accent); flex-shrink: 0; }
+        .contact-right h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-primary); }
+        .contact-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .contact-btn { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.8rem 1.5rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; color: var(--text-primary); text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: all 0.2s ease; }
+        .contact-btn:hover { background: var(--bg-card-hover); border-color: var(--border-hover); transform: translateY(-2px); }
+        .contact-btn svg { width: 20px; height: 20px; }
+
+        /* FOOTER */
+        footer { padding: 3rem 2rem; border-top: 1px solid var(--border); }
+        .footer-content { max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
+
+        /* PARTICLES */
+        #particlesCanvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .about-content { grid-template-columns: 1fr; gap: 3rem; }
+            .contact-box { grid-template-columns: 1fr; gap: 3rem; }
+            .projects-grid { grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); }
+        }
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            .nav-menu { position: fixed; top: 0; right: -100%; width: 70%; max-width: 300px; height: 100vh; background: var(--mobile-menu-bg); backdrop-filter: blur(12px); flex-direction: column; padding: 5rem 2rem 2rem; gap: 2rem; align-items: flex-start; transition: right 0.3s ease; border-left: 1px solid var(--border); z-index: 1000; }
+            .nav-menu.active { right: 0; }
+            .nav-menu li { width: 100%; }
+            .nav-menu a { font-size: 1.1rem; display: block; padding: 0.5rem 0; }
+            .nav-cta { display: none; }
+            .nav-container { padding: 0 1.5rem; }
+            .logo { font-size: 0.95rem; }
+            .toggle-btn span { display: none; }
+            .toggle-btn { padding: 0.45rem 0.6rem; }
+            .hero { padding: 0 1.5rem; min-height: 90vh; }
+            .hero h1 { font-size: clamp(1.75rem,8vw,2.5rem); line-height: 1.2; }
+            .hero p { font-size: 1rem; margin-bottom: 2rem; }
+            .hero-buttons { flex-direction: column; width: 100%; }
+            .btn { width: 100%; justify-content: center; }
+            .about, .experience, .certificates, .skills, .projects, .contact { padding: 4rem 1.5rem; }
+            .section-header { margin-bottom: 3rem; }
+            .section-title { font-size: clamp(1.5rem,6vw,2rem); }
+            .stats-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .stat-card { padding: 1.5rem; }
+            .stat-number { font-size: 2rem; }
+            .timeline { padding-left: 1.5rem; }
+            .timeline-dot { left: -2rem; }
+            .timeline-content { padding: 1.5rem; }
+            .timeline-content h3 { font-size: 1.25rem; }
+            .certificates-grid, .projects-grid { grid-template-columns: 1fr; }
+            .project-card h3 { font-size: 1.25rem; }
+            .contact-box { padding: 2rem; gap: 2rem; }
+            .contact-buttons { flex-direction: column; }
+            .contact-btn { width: 100%; justify-content: center; }
+            .footer-content { flex-direction: column; text-align: center; }
+        }
+        @media (max-width: 480px) {
+            .nav-container { padding: 0 1rem; }
+            .logo { font-size: 0.85rem; }
+            .hero-badge { font-size: 0.75rem; padding: 0.4rem 0.8rem; }
+            .about, .experience, .certificates, .skills, .projects, .contact { padding: 3rem 1rem; }
+            .contact-box { padding: 1.5rem; }
+            .tech-item, .tag { font-size: 0.8rem; padding: 0.4rem 0.8rem; }
         }
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-primary);
-            overflow-x: hidden;
-        }
-
-        /* Navbar Next.js Style */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1.5rem 0;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .navbar.scrolled {
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .nav-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.1rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-            align-items: center;
-        }
-
-        .nav-menu a {
-            text-decoration: none;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.2s ease;
-            letter-spacing: -0.2px;
-        }
-
-        .nav-menu a:hover {
-            color: var(--text-primary);
-        }
-
-        .nav-cta {
-            padding: 0.6rem 1.2rem;
-            background: var(--text-primary);
-            color: var(--bg-dark);
-            border-radius: 6px;
-            font-weight: 600;
-            transition: all 0.2s ease;
-        }
-
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
-        }
-
-        /* Hamburger Menu */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
+        /* IMAGE ZOOM/LIGHTBOX */
+        .carousel-track img, .carousel-track img[clickable="true"] {
             cursor: pointer;
-            z-index: 1001;
+            transition: transform 0.2s ease;
+        }
+        .carousel-track img:hover {
+            opacity: 0.8;
         }
 
-        .hamburger span {
-            width: 25px;
-            height: 2px;
-            background: var(--text-primary);
-            transition: all 0.3s ease;
-            border-radius: 2px;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(7px, 7px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
-        }
-
-        .mobile-menu-overlay {
+        .image-modal {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
             opacity: 0;
             transition: opacity 0.3s ease;
+            align-items: center;
+            justify-content: center;
         }
 
-        .mobile-menu-overlay.active {
-            display: block;
+        .image-modal.active {
+            display: flex;
             opacity: 1;
         }
 
-        /* Hero Section - Next.js Style */
-        .hero {
-            min-height: 100vh;
+        .image-modal-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-            padding: 0 2rem;
+            animation: zoomIn 0.3s ease;
         }
 
-        .hero-grid {
-            position: absolute;
-            inset: 0;
-            background-image: 
-                linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
-        }
-
-        .hero-content {
-            max-width: 1280px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            margin-bottom: 2rem;
-            animation: fadeInDown 0.8s ease;
-        }
-
-        .hero-badge .dot {
-            width: 6px;
-            height: 6px;
-            background: #22c55e;
-            border-radius: 50%;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        @keyframes fadeInDown {
+        @keyframes zoomIn {
             from {
+                transform: scale(0.8);
                 opacity: 0;
-                transform: translateY(-20px);
             }
             to {
+                transform: scale(1);
                 opacity: 1;
-                transform: translateY(0);
             }
         }
 
-        .hero h1 {
-            font-size: clamp(2rem, 8vw, 6rem);
-            font-weight: 800;
-            line-height: 1.1;
-            letter-spacing: -0.05em;
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 0.8s ease 0.2s backwards;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            background-size: 200% auto;
-            animation: gradientShift 3s ease infinite;
-        }
-
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            line-height: 1.8;
-            margin-bottom: 2.5rem;
-            animation: fadeInUp 0.8s ease 0.4s backwards;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            animation: fadeInUp 0.8s ease 0.6s backwards;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
+        .image-modal-img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
             border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            display: inline-flex;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .image-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
             align-items: center;
-            gap: 0.5rem;
             justify-content: center;
-        }
-
-        .btn-primary {
-            background: var(--text-primary);
-            color: var(--bg-dark);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--text-primary);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        /* About Section */
-        .about {
-            padding: 8rem 2rem;
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 5rem;
-        }
-
-        .section-label {
-            display: inline-block;
-            padding: 0.4rem 1rem;
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--accent);
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .section-title {
-            font-size: clamp(1.75rem, 4vw, 3rem);
-            font-weight: 800;
-            letter-spacing: -0.02em;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
-
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .tech-item {
-            padding: 0.6rem 1.2rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            font-size: 0.9rem;
-            font-weight: 500;
             transition: all 0.2s ease;
+            z-index: 2001;
         }
 
-        .tech-item:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
+        .image-modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.8);
+            transform: scale(1.1);
         }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-        }
-
-        .stat-card {
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .stat-card:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(59, 130, 246, 0.3);
-            transform: translateY(-4px);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        /* Experience Section */
-        .experience {
-            padding: 8rem 2rem;
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-
-        .experience-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .timeline {
-            position: relative;
-            padding-left: 2rem;
-        }
-
-        .timeline::before {
-            content: '';
+        .image-modal-nav {
             position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(180deg, 
-                rgba(59, 130, 246, 0),
-                rgba(59, 130, 246, 0.5),
-                rgba(59, 130, 246, 0)
-            );
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 3rem;
-            animation: fadeInLeft 0.6s ease;
-        }
-
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: -2.5rem;
-            top: 0.5rem;
-            width: 12px;
-            height: 12px;
-            background: var(--accent);
-            border: 3px solid var(--bg-dark);
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            color: white;
+            font-size: 20px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
-            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            z-index: 2001;
         }
 
-        .timeline-content {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 2rem;
-            transition: all 0.3s ease;
+        .image-modal-nav:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.8);
+            transform: translateY(-50%) scale(1.1);
         }
 
-        .timeline-content:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(59, 130, 246, 0.3);
-            transform: translateX(8px);
+        .image-modal-nav.prev {
+            left: 20px;
         }
 
-        .timeline-date {
-            display: inline-block;
-            padding: 0.3rem 0.8rem;
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            border-radius: 6px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--accent);
-            margin-bottom: 1rem;
+        .image-modal-nav.next {
+            right: 20px;
         }
 
-        .timeline-content h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.02em;
-        }
-
-        .company {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
-
-        .timeline-content p {
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin-bottom: 1rem;
-        }
-
-        /* Certificates Section */
-        .certificates {
-            padding: 8rem 2rem;
-            background: linear-gradient(180deg, transparent, rgba(59, 130, 246, 0.02), transparent);
-        }
-
-        .certificates-container {
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-
-        .certificates-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .certificate-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .certificate-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-        }
-
-        .certificate-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .certificate-card:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(59, 130, 246, 0.3);
-            transform: translateY(-8px);
-        }
-
-        .cert-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            display: inline-block;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        #particlesCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
+        .image-modal-nav.hidden {
+            opacity: 0;
             pointer-events: none;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .certificate-card h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.02em;
-        }
-
-        .cert-issuer {
-            color: var(--accent);
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .cert-date {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
-        }
-
-        .certificate-card p {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .cert-link {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
-            transition: all 0.2s ease;
-        }
-
-        .cert-link:hover {
-            gap: 0.5rem;
-        }
-
-        /* Projects Section */
-        .projects {
-            padding: 8rem 2rem;
-        }
-
-        .projects-container {
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card::before {
-            content: '';
+        .image-modal-counter {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .project-card:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(59, 130, 246, 0.3);
-            transform: translateY(-8px);
-        }
-
-        .project-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .project-card h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
-        }
-
-        .project-card p {
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .tag {
-            padding: 0.3rem 0.8rem;
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            border-radius: 6px;
-            font-size: 0.8rem;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
             font-weight: 500;
-            color: var(--accent);
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 8rem 2rem;
-            background: var(--bg-dark);
-        }
-
-        .contact-wrapper {
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-
-        .contact-header {
-            margin-bottom: 3rem;
-        }
-
-        .contact-header .section-label {
-            display: inline-block;
-            padding: 0.4rem 1rem;
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--accent);
-            letter-spacing: 1.5px;
-            margin-bottom: 1rem;
-        }
-
-        .contact-header h2 {
-            font-size: clamp(2rem, 5vw, 4rem);
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            color: var(--text-primary);
-            margin: 0;
-        }
-
-        .contact-box {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 3rem;
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .contact-description {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin-bottom: 2rem;
-            max-width: 600px;
-        }
-
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-size: 1rem;
-            color: var(--text-primary);
-        }
-
-        .contact-svg {
-            color: var(--accent);
-            flex-shrink: 0;
-        }
-
-        .contact-right h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--text-primary);
-        }
-
-        .contact-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .contact-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 0.8rem 1.5rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            color: var(--text-primary);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.2s ease;
-        }
-
-        .contact-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(59, 130, 246, 0.3);
-            transform: translateY(-2px);
-        }
-
-        .contact-btn svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem 1.5rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            color: var(--text-primary);
-            font-size: 1rem;
-            font-family: 'Inter', sans-serif;
-            transition: all 0.2s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            background: rgba(255, 255, 255, 0.08);
-            border-color: var(--accent);
-        }
-
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            padding: 1rem 2rem;
-            background: var(--text-primary);
-            color: var(--bg-dark);
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
-        }
-
-        /* Footer */
-        footer {
-            padding: 3rem 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .footer-content {
-            max-width: 1280px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .social-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: all 0.2s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--text-primary);
-            transform: translateY(-2px);
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 1024px) {
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .contact-box {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .projects-grid {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            }
+            z-index: 2001;
         }
 
         @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
+            .image-modal-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
             }
-
-            .nav-menu {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 70%;
-                max-width: 300px;
-                height: 100vh;
-                background: rgba(0, 0, 0, 0.95);
-                backdrop-filter: blur(12px);
-                flex-direction: column;
-                padding: 5rem 2rem 2rem;
-                gap: 2rem;
-                align-items: flex-start;
-                transition: right 0.3s ease;
-                border-left: 1px solid rgba(255, 255, 255, 0.1);
-                z-index: 1000;
-            }
-
-            .nav-menu.active {
-                right: 0;
-            }
-
-            .nav-menu li {
-                width: 100%;
-            }
-
-            .nav-menu a {
-                font-size: 1.1rem;
-                display: block;
-                padding: 0.5rem 0;
-            }
-
-            .nav-cta {
-                display: block;
-                text-align: center;
-                margin-top: 1rem;
-            }
-            .nav-container {
-                padding: 0 1.5rem;
-            }
-
-            .logo {
-                font-size: 0.95rem;
-            }
-
-            .nav-menu {
-                gap: 1rem;
-            }
-
-            .nav-menu a {
-                font-size: 0.8rem;
-            }
-
-            .nav-cta {
-                display: none;
-            }
-
-            .hero {
-                padding: 0 1.5rem;
-                min-height: 90vh;
-            }
-
-            .hero h1 {
-                font-size: clamp(1.75rem, 8vw, 2.5rem);
-                line-height: 1.2;
-            }
-
-            .hero p {
-                font-size: 1rem;
-                margin-bottom: 2rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .about, .experience, .certificates, .projects, .contact {
-                padding: 4rem 1.5rem;
-            }
-
-            .section-header {
-                margin-bottom: 3rem;
-            }
-
-            .section-title {
-                font-size: clamp(1.5rem, 6vw, 2rem);
-            }
-
-            .about-text p {
-                font-size: 1rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .stat-card {
-                padding: 1.5rem;
-            }
-
-            .stat-number {
-                font-size: 2rem;
-            }
-
-            .timeline {
-                padding-left: 1.5rem;
-            }
-
-            .timeline-dot {
-                left: -2rem;
-            }
-
-            .timeline-content {
-                padding: 1.5rem;
-            }
-
-            .timeline-content h3 {
-                font-size: 1.25rem;
-            }
-
-            .certificates-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .project-card h3 {
-                font-size: 1.25rem;
-            }
-
-            .contact-box {
-                padding: 2rem;
-                gap: 2rem;
-            }
-
-            .contact-description {
-                font-size: 1rem;
-            }
-
-            .contact-buttons {
-                flex-direction: column;
-            }
-
-            .contact-btn {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .nav-container {
-                padding: 0 1rem;
-            }
-
-            .logo {
-                font-size: 0.85rem;
-            }
-
-            .hero-badge {
-                font-size: 0.75rem;
-                padding: 0.4rem 0.8rem;
-            }
-
-            .about, .experience, .certificates, .projects, .contact {
-                padding: 3rem 1rem;
-            }
-
-            .contact-box {
-                padding: 1.5rem;
-            }
-
-            .contact-item {
-                font-size: 0.9rem;
-                flex-wrap: wrap;
-            }
-
-            .tech-item, .tag {
-                font-size: 0.8rem;
-                padding: 0.4rem 0.8rem;
+            .image-modal-nav.prev { left: 10px; }
+            .image-modal-nav.next { right: 10px; }
+            .image-modal-close {
+                width: 35px;
+                height: 35px;
+                top: 10px;
+                right: 10px;
+                font-size: 20px;
             }
         }
     </style>
 </head>
 <body>
-     <canvas id="particlesCanvas"></canvas>
-    <!-- Navbar -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <div class="logo">Andrian Gilbert Tampubolon</div>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Work</a></li>
-                <li><a href="#certificates">Certificates</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
-            </ul>
-        </div>
-    </nav>
-    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+<canvas id="particlesCanvas"></canvas>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-grid"></div>
-        <div class="hero-content">
-            <div class="hero-badge">
-                <span class="dot"></span>
-                Open to new positions
-            </div>
-            <h1>
-                Server & Network Engineer<br>
-                <span class="gradient-text">Practical solutions</span> from<br>
-                Server to cable
-            </h1>
-            <p>
-                Hands-on experience in designing and planning data center facilities and infrastructure,
-                including room layout, rack placement, power distribution, cooling systems, and structured
-                cabling. Skilled in aligning physical infrastructure with server, network, and virtualization
-                requirements to ensure reliable, efficient, and scalable operations from the ground up.
-            </p>
-            <div class="hero-buttons">
-                <a href="#projects" class="btn btn-primary">
-                    View My Work
-                    <span>→</span>
-                </a>
-                <a href="#contact" class="btn btn-secondary">
-                    Get In Touch
-                </a>
+<!-- Image Modal/Lightbox -->
+<div class="image-modal" id="imageModal">
+    <div class="image-modal-content">
+        <button class="image-modal-close" id="imageModalClose" aria-label="Close image">&times;</button>
+        <button class="image-modal-nav prev" id="imageModalPrev" aria-label="Previous image">&#8249;</button>
+        <img class="image-modal-img" id="imageModalImg" src="" alt="Zoomed image">
+        <button class="image-modal-nav next" id="imageModalNext" aria-label="Next image">&#8250;</button>
+        <div class="image-modal-counter">
+            <span id="imageModalCounter">1 / 1</span>
+        </div>
+    </div>
+</div>
+
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <div class="logo">Andrian Gilbert Tampubolon</div>
+        <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="#about" data-i18n="nav.about">About</a></li>
+            <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
+            <li><a href="#projects" data-i18n="nav.work">Work</a></li>
+            <li><a href="#certificates" data-i18n="nav.certificates">Certificates</a></li>
+            <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+            <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+            <li><a href="#contact" class="nav-cta" data-i18n="nav.cta">Let's Talk</a></li>
+        </ul>
+        <div class="nav-controls">
+            <button class="toggle-btn" id="langToggle" aria-label="Toggle language">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                <span id="langLabel">EN</span>
+            </button>
+            <button class="toggle-btn" id="themeToggle" aria-label="Toggle theme">
+                <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                <span id="themeLabel">Light</span>
+            </button>
+        </div>
+    </div>
+</nav>
+<div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+        <div class="hero-badge">
+            <span class="dot"></span>
+            <span data-i18n="hero.badge">Open to new positions</span>
+        </div>
+        <h1>
+            <span data-i18n="hero.title">Data Center Engineer</span><br>
+            <span data-i18n="hero.gradientText">Designing resilient infrastructure</span><br>
+            <span class="gradient-text" data-i18n="hero.fromTo">from physical to virtual.</span>
+        </h1>
+        <p data-i18n="hero.desc">Skilled at designing data center facilities— from room layout and power distribution to structured cabling—ensuring physical infrastructure seamlessly aligns with server, network, and virtualization needs for reliable, scalable, and efficient operations.</p>
+        <div class="hero-buttons">
+            <a href="#projects" class="btn btn-primary">
+                <span data-i18n="hero.viewWork">View My Work</span>
+                <span>→</span>
+            </a>
+            <a href="#contact" class="btn btn-secondary" data-i18n="hero.getInTouch">Get In Touch</a>
+        </div>
+    </div>
+</section>
+
+<!-- About -->
+<section class="about" id="about">
+    <div class="section-header">
+        <span class="section-label" data-i18n="about.label">About Me</span>
+        <h2 class="section-title" data-i18n="about.title">Making infrastructure reliable and well-structured.</h2>
+    </div>
+    <div class="about-content">
+        <div class="about-text">
+            <p data-i18n="about.p1">Hi! I'm Andrian Gilbert Tampubolon, a Server & Network Engineer with hands-on experience in designing, deploying, and maintaining robust IT infrastructure. I specialize in Linux server administration, network engineering, virtualization, and data center operations — ensuring systems run reliably, securely, and efficiently.</p>
+            <p data-i18n="about.p2">I have implemented enterprise-level backup and disaster recovery solutions, built virtualization clusters, and designed structured infrastructure that supports business continuity and long-term scalability.</p>
+            <p data-i18n="about.p3">Beyond daily operations, I continuously explore cloud computing, AI technologies, and network automation to improve system performance and operational efficiency.</p>
+            <div class="tech-stack">
+                <span class="tech-item" data-i18n="about.skill1">System Administration</span>
+                <span class="tech-item" data-i18n="about.skill2">Data Center Facility & Infrastructure</span>
+                <span class="tech-item" data-i18n="about.skill3">Network Engineering</span>
+                <span class="tech-item" data-i18n="about.skill4">Cloud Computing</span>
             </div>
         </div>
-    </section>
+        <div class="stats-grid">
+            <div class="stat-card"><div class="stat-number">5+</div><div class="stat-label" data-i18n="about.stat1">Projects Completed</div></div>
+            <div class="stat-card"><div class="stat-number">1+</div><div class="stat-label" data-i18n="about.stat2">Year IT Experience</div></div>
+            <div class="stat-card"><div class="stat-number">4</div><div class="stat-label" data-i18n="about.stat3">Certifications Earned</div></div>
+            <div class="stat-card"><div class="stat-number">2</div><div class="stat-label" data-i18n="about.stat4">DRC System Built</div></div>
+        </div>
+    </div>
+</section>
 
-    <!-- About -->
-    <section class="about" id="about">
+<!-- Experience -->
+<section class="experience" id="experience">
+    <div class="experience-container">
         <div class="section-header">
-            <span class="section-label">About Me</span>
-            <h2 class="section-title">Passionate about building reliable and well-structured infrastructure</h2>
+            <span class="section-label" data-i18n="exp.label">Experience</span>
+            <h2 class="section-title" data-i18n="exp.title">Where I've worked</h2>
         </div>
-        <div class="about-content">
-            <div class="about-text">
-                <p>
-                    Hi! I'm Andrian Gilbert Tampubolon, a Server & Network Engineer with hands-on experience in designing, deploying, and maintaining robust IT infrastructure.
-                    I specialize in Linux server administration, network engineering, virtualization, and data center operations — ensuring systems run reliably, securely, and efficiently.
-                </p>
-                <p>
-                    I have implemented enterprise-level backup and disaster recovery solutions, built virtualization clusters, 
-                    and designed structured infrastructure that supports business continuity and long-term scalability. 
-                </p>
-                <p>
-                    Beyond daily operations, I continuously explore cloud computing, AI technologies, and
-                    network automation to improve system performance and operational efficiency.
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-item">System Administration</span>
-                    <span class="tech-item">Data Center Facility & Infrastructure</span>
-                    <span class="tech-item">Network Engineering</span>
-                    <span class="tech-item">Cloud Computing</span>
-                </div>
-            </div>
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">8+</div>
-                    <div class="stat-label">Projects Completed</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">1+</div>
-                    <div class="stat-label">Year IT Experience</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">3</div>
-                    <div class="stat-label">Certifications Earned</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">2</div>
-                    <div class="stat-label">DRC System Built</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience -->
-    <section class="experience" id="experience">
-        <div class="experience-container">
-            <div class="section-header">
-                <span class="section-label">Experience</span>
-                <h2 class="section-title">Where I've worked</h2>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">Jun 2025 - Present</div>
-                        <h3>Server & Network Engineer</h3>
-                        <div class="company">PT Pundi Mas Berjaya</div>
-                        <p>
-                           Managing data center infrastructure, Linux servers, and network systems. Deployed
-                           enterprise-grade backup and disaster recovery solutions and implemented real-timeve 
-                           monitoring with Zabbix integrated to Discord and email notifications to minimize. 
-                           downtime and ensure operational stability.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech-item">System Administration</span>
-                            <span class="tech-item">Data Center Facility & Infrastructure</span>
-                            <span class="tech-item">Network Engineering</span>
-                        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">Jun 2025 - Mei 2026 (Current)</div>
+                    <h3 data-i18n="exp.job1.title">Server & Network Engineer</h3>
+                    <div class="company">PT Pundi Mas Berjaya</div>
+                    <p data-i18n="exp.job1.desc">Managing data center infrastructure, Linux servers, and network systems. Deployed enterprise-grade backup and disaster recovery solutions and implemented real-time monitoring with Zabbix integrated to Discord and email notifications to minimize downtime and ensure operational stability.</p>
+                    <div class="tech-stack">
+                        <span class="tech-item">System Administration</span>
+                        <span class="tech-item">Data Center Facility & Infrastructure</span>
+                        <span class="tech-item">Network Engineering</span>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">Nov 2024 - Apr 2025</div>
-                        <h3>TKJ Internship</h3>
-                        <div class="company">PT Pundi Mas Berjaya</div>
-                        <p>
-                            Built and managed IT infrastructure including webmail systems, Zabbix monitoring, 
-                            domain hosting, and Proxmox virtualization. Created nodes and clusters for  
-                            optimized resource allocation and system reliability.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech-item">Proxmox</span>
-                            <span class="tech-item">Zabbix</span>
-                            <span class="tech-item">Webmail</span>
-                            <span class="tech-item">Networking</span>
-                            <span class="tech-item">Domain Hosting</span>
-                        </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">Nov 2024 - Apr 2025</div>
+                    <h3 data-i18n="exp.job2.title">TKJ Internship</h3>
+                    <div class="company">PT Pundi Mas Berjaya</div>
+                    <p data-i18n="exp.job2.desc">Built and managed IT infrastructure including webmail systems, Zabbix monitoring, domain hosting, and Proxmox virtualization. Created nodes and clusters for optimized resource allocation and system reliability.</p>
+                    <div class="tech-stack">
+                        <span class="tech-item">Proxmox</span>
+                        <span class="tech-item">Zabbix</span>
+                        <span class="tech-item">Webmail</span>
+                        <span class="tech-item">Networking</span>
+                        <span class="tech-item">Domain Hosting</span>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Certificates -->
-    <section class="certificates" id="certificates">
-        <div class="certificates-container">
-            <div class="section-header">
-                <span class="section-label">Certifications</span>
-                <h2 class="section-title">Professional credentials</h2>
+<!-- Certificates -->
+<section class="certificates" id="certificates">
+    <div class="certificates-container">
+        <div class="section-header">
+            <span class="section-label" data-i18n="cert.label">Certifications</span>
+            <h2 class="section-title" data-i18n="cert.title">Professional credentials</h2>
+        </div>
+        <div class="certificates-grid">
+            <div class="certificate-card">
+                <div class="cert-icon">
+                    <img src="https://dicoding-web-img.sgp1.cdn.digitaloceanspaces.com/original/commons/certificate_logo.png" alt="Dicoding" style="width:48px;height:48px;object-fit:contain;">
+                </div>
+                <h3 data-i18n="cert.c1.title">Belajar Dasar Cloud dan Gen AI di AWS</h3>
+                <div class="cert-issuer">Dicoding Indonesia</div>
+                <div class="cert-date" data-i18n="cert.c1.date">Issued: Oct 2025 · Expires: Oct 2028</div>
+                <p data-i18n="cert.c1.desc">Covers AWS core services including EC2, S3, VPC, IAM, CloudWatch, and generative AI fundamentals on AWS — from cloud computing basics to migration strategies and the Well-Architected Framework.</p>
+                <a href="https://www.dicoding.com/certificates/0LZ056N9NX65" target="_blank" class="cert-link" data-i18n="cert.viewLink">View Credential →</a>
             </div>
-            <div class="certificates-grid">
-                <div class="certificate-card">
-                    <div class="cert-icon">☁️</div>
-                    <h3>Belajar Dasar Cloud dan Gen AI di AWS</h3>
-                    <div class="cert-issuer">Dicoding Indonesia</div>
-                    <div class="cert-date">Issued: Oct 2025 · Expires: Oct 2028</div>
-                    <p>
-                        Understand the fundamentals of cloud computing and generative AI on the AWS platform 
-                        including virtual server management and network security.
-                    </p>
-                    <a href="https://www.dicoding.com/certificates/0LZ056N9NX65" class="cert-link">View Credential →</a>
+            <div class="certificate-card">
+                <div class="cert-icon">
+                    <img src="https://dicoding-web-img.sgp1.cdn.digitaloceanspaces.com/original/commons/certificate_logo.png" alt="Dicoding" style="width:48px;height:48px;object-fit:contain;">
                 </div>
-                <div class="certificate-card">
-                    <div class="cert-icon">🤖</div>
-                    <h3>Oracle Certified Foundations Associate</h3>
-                    <div class="cert-issuer">Oracle</div>
-                    <div class="cert-date">Issued: Oct 2025 · Expires: Oct 2027</div>
-                    <p>
-                        Foundational certification in artificial intelligence and machine learning,
-                        covering large language models (LLMs), deep learning,
-                        and AI services on Oracle Cloud Infrastructure.
-                    </p>
-                    <a href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=C2FFE3A7420558D77768C6934082F00E8DB91C3E87E499C9B0A2A8E0C774E21C" class="cert-link">View Credential →</a>
+                <h3 data-i18n="cert.c2.title">Belajar Dasar AI</h3>
+                <div class="cert-issuer">Dicoding Indonesia</div>
+                <div class="cert-date" data-i18n="cert.c2.date">Issued: 2025</div>
+                <p data-i18n="cert.c2.desc">Covers AI and machine learning fundamentals including supervised and unsupervised learning, deep learning, neural networks, and practical data preparation for AI development.</p>
+                <a href="https://www.dicoding.com/certificates/72ZDKN3YVPYW" target="_blank" class="cert-link" data-i18n="cert.viewLink">View Credential →</a>
+            </div>
+            <div class="certificate-card">
+                <div class="cert-icon">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg" alt="Oracle" style="width:64px;height:48px;object-fit:contain;">
                 </div>
-                <div class="certificate-card">
-                    <div class="cert-icon">🎓</div>
-                    <h3>Certified UKK IDUKA</h3>
-                    <div class="cert-issuer">PT Pundi Mas Berjaya</div>
-                    <div class="cert-date">Issued: Feb 2025</div>
-                    <p>
-                        Technical competency certification in data center management and enterprise virtualization  
-                        using Proxmox VE, covering cluster deployment, node management,and infrastructure optimization.
-                    </p>
-                    <a href="#" class="cert-link">View Credential →</a>
+                <h3 data-i18n="cert.c3.title">OCI 2025 Certified AI Foundations Associate</h3>
+                <div class="cert-issuer">Oracle</div>
+                <div class="cert-date" data-i18n="cert.c3.date">Issued: Oct 2025 · Expires: Oct 2027</div>
+                <p data-i18n="cert.c3.desc">Foundational certification covering AI and ML concepts on Oracle Cloud Infrastructure, including generative AI, large language models (LLMs), CNNs, RNNs, and OCI AI services.</p>
+                <a href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=C2FFE3A7420558D77768C6934082F00E8DB91C3E87E499C9B0A2A8E0C774E21C" target="_blank" class="cert-link" data-i18n="cert.viewLink">View Credential →</a>
+            </div>
+            <div class="certificate-card">
+                <div class="cert-icon">
+                    <img src="data:image/jpeg;base64,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" alt="PT Pundi Mas Berjaya Logo" style="width:48px;height:48px;object-fit:contain;">
+                </div>
+                <h3 data-i18n="cert.c4.title">Certified UKK IDUKA</h3>
+                <div class="cert-issuer">PT Pundi Mas Berjaya</div>
+                <div class="cert-date" data-i18n="cert.c4.date">Issued: Feb 2025</div>
+                <p data-i18n="cert.c4.desc">Technical competency certification in data center management and enterprise virtualization using Proxmox VE, covering cluster deployment, node management, and infrastructure optimization.</p>
+                <a href="#" class="cert-link" data-i18n="cert.viewLink">View Credential →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills -->
+<section class="skills" id="skills">
+    <div class="skills-container">
+        <div class="section-header">
+            <span class="section-label" data-i18n="skills.label">Skills</span>
+            <h2 class="section-title" data-i18n="skills.title">What I work with</h2>
+        </div>
+        <div class="skills-categories">
+
+            <!-- Infrastructure & Server -->
+            <div class="skill-category">
+                <h3 class="skill-cat-title" data-i18n="skills.cat1">Infrastructure & Server</h3>
+                <div class="skill-items">
+                    <div class="skill-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux">
+                        <span>Linux</span>
+                    </div>
+                    <div class="skill-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><circle cx="12" cy="10" r="2"/></svg>
+                        <span>Proxmox VE</span>
+                    </div>
+                    <div class="skill-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><circle cx="6" cy="6" r="1" fill="currentColor"/><circle cx="6" cy="18" r="1" fill="currentColor"/></svg>
+                        <span>System Admin</span>
+                    </div>
+                    <div class="skill-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+                        <span>Data Center Ops</span>
+                    </div>
+                    <div class="skill-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+                        <span>Mail Servers</span>
+                    </div>
+                    <div class="skill-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                        <span>DBMS</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Network -->
+            <div class="skill-category">
+                <h3 class="skill-cat-title" data-i18n="skills.cat2">Network</h3>
+                <div class="skill-items">
+                    <div class="skill-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>
+                        <span>MikroTik</span>
+                    </div>
+                    <div class="skill-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        <span>Network Architecture</span>
+                    </div>
+                    <div class="skill-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="8" rx="2"/><path d="M7 6h.01M11 6h.01"/><path d="M2 14h4v4H2zM10 14h4v4h-4zM18 14h4v4h-4z"/><path d="M4 18v2M12 18v2M20 18v2"/></svg>
+                        <span>Network Admin</span>
+                    </div>
+                    <div class="skill-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        <span>Access Control</span>
+                    </div>
+                    <div class="skill-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        <span>VPN</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Monitoring & Recovery -->
+            <div class="skill-category">
+                <h3 class="skill-cat-title" data-i18n="skills.cat3">Monitoring & Recovery</h3>
+                <div class="skill-items">
+                    <div class="skill-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg>
+                        <span>Zabbix</span>
+                    </div>
+                    <div class="skill-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17,8 12,3 7,8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                        <span>Backup & DR</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cloud -->
+            <div class="skill-category">
+                <h3 class="skill-cat-title" data-i18n="skills.cat4">Cloud</h3>
+                <div class="skill-items">
+                    <div class="skill-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" alt="AWS">
+                        <span>AWS</span>
+                        <span class="skill-level">Foundational</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg" alt="Oracle Cloud">
+                        <span>Oracle Cloud</span>
+                        <span class="skill-level">Foundational</span>
+                    </div>
+                    <div class="skill-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+                        <span>Cloud Computing</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- LinkedIn CTA -->
+        <div class="skills-footer">
+            <p data-i18n="skills.more">Want to see all my skills?</p>
+            <a href="https://www.linkedin.com/in/andrian-gilbert-tampubolon-586462338/" target="_blank" class="btn btn-secondary skills-linkedin-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                <span data-i18n="skills.linkedinBtn">View all on LinkedIn</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Projects -->
+<section class="projects" id="projects">
+    <div class="projects-container">
+        <div class="section-header">
+            <span class="section-label" data-i18n="proj.label">Featured Work</span>
+            <h2 class="section-title" data-i18n="proj.title">Projects I'm proud of</h2>
+        </div>
+        <div class="projects-grid">
+
+            <!-- CARD 1 -->
+            <div class="project-card">
+                <div class="carousel" data-index="0">
+                    <div class="carousel-track">
+                        <img src="./image/picture4.png" alt="DRC Project 1">
+                        <!-- <img src="./image/picture4.png" alt="DRC Project 2"> -->
+                    </div>
+                    <button class="carousel-btn prev">&#8249;</button>
+                    <button class="carousel-btn next">&#8250;</button>
+                    <div class="carousel-dots"></div>
+                </div>
+                <div class="desc" style="height:22rem;">
+                    <h3 data-i18n="proj.p1.title">Enterprise DRC & Colocation Backup System</h3>
+                    <p data-i18n="proj.p1.desc">Engineered a multi-location DRC architecture featuring secure MikroTik inter-DC connectivity and Proxmox virtualization. This system ensures stable data replication and High Availability with a resilient failover mechanism to guarantee uninterrupted business continuity.</p>
+                </div>
+                <div class="project-tags">
+                    <span class="tag">Proxmox</span><span class="tag">NAS</span>
+                    <span class="tag">Site-to-Site Connectivity</span><span class="tag">Mikrotik RouterOS</span>
+                    <span class="tag">DR Failover</span>
+                </div>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="project-card">
+                <div class="carousel" data-index="0">
+                    <div class="carousel-track">
+                        <img src="./image/picture1.png" alt="Monitoring Project 1">
+                        <img src="./image/picture7.png" alt="Monitoring Project 2">
+                    </div>
+                    <button class="carousel-btn prev">&#8249;</button>
+                    <button class="carousel-btn next">&#8250;</button>
+                    <div class="carousel-dots"></div>
+                </div>
+                <div class="desc" style="height:22rem;">
+                    <h3 data-i18n="proj.p2.title">Data Center Monitoring System</h3>
+                    <p data-i18n="proj.p2.desc">Implemented a comprehensive monitoring solution using Zabbix with Discord and email notifications for real-time alerts, ensuring prompt response to system issues.</p>
+                </div>
+                <div class="project-tags">
+                    <span class="tag">Zabbix</span><span class="tag">Discord</span>
+                    <span class="tag">Email Alerts</span><span class="tag">Linux</span><span class="tag">Monitoring</span>
+                </div>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="project-card">
+                <div class="carousel" data-index="0">
+                    <div class="carousel-track">
+                        <img src="./image/picture2.jpg" alt="Virtualization Project 1">
+                        <img src="./image/picture8.png" alt="Virtualization Project 2">
+                    </div>
+                    <button class="carousel-btn prev">&#8249;</button>
+                    <button class="carousel-btn next">&#8250;</button>
+                    <div class="carousel-dots"></div>
+                </div>
+                <div class="desc" style="height:22rem;">
+                    <h3 data-i18n="proj.p3.title">Enterprise Virtualization Infrastructure Implementation</h3>
+                    <p data-i18n="proj.p3.desc">Performed server hardware upgrades, initialized Proxmox VE nodes, and deployed a virtualization cluster with centralized resource management and high availability configuration.</p>
+                </div>
+                <div class="project-tags">
+                    <span class="tag">Proxmox VE</span><span class="tag">Server Hardware</span>
+                    <span class="tag">iDRAC Configuration</span><span class="tag">Virtualization</span>
+                    <span class="tag">Cluster Management</span>
+                </div>
+            </div>
+
+            <!-- CARD 4 -->
+            <div class="project-card">
+                <div class="carousel" data-index="0">
+                    <div class="carousel-track">
+                        <img src="./image/picture5.png" alt="Hybrid DRC Project 1">
+                        <img src="./image/picture6.png" alt="Hybrid DRC Project 2">
+                    </div>
+                    <button class="carousel-btn prev">&#8249;</button>
+                    <button class="carousel-btn next">&#8250;</button>
+                    <div class="carousel-dots"></div>
+                </div>
+                <div class="desc" style="height:22rem;">
+                    <h3 data-i18n="proj.p4.title">Hybrid DRC & HA Miniaturization</h3>
+                    <p data-i18n="proj.p4.desc">Engineered a resilient hybrid DRC and High-Availability (HA) proof-of-concept bridging bare-metal infrastructure with Cloud VPS. Implemented MikroTik CHR with secure tunneling (WireGuard + EoIP) to bypass NAT constraints, utilizing Nginx Proxy Manager for traffic distribution and Syncthing for real-time Docker data replication. Features automated failover mechanism to guarantee 24/7 service continuity.</p>
+                </div>
+                <div class="project-tags">
+                    <span class="tag">MikroTik CHR</span><span class="tag">WireGuard</span>
+                    <span class="tag">EoIP</span><span class="tag">Nginx Proxy Manager</span>
+                    <span class="tag">Syncthing</span><span class="tag">Docker</span>
+                    <span class="tag">DR Failover</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section class="contact" id="contact">
+    <div class="contact-wrapper">
+        <div class="contact-header">
+            <span class="section-label" data-i18n="contact.label">CONTACT</span>
+            <h2 data-i18n="contact.title">Get In Touch</h2>
+        </div>
+        <div class="contact-box">
+            <div class="contact-left">
+                <p class="contact-description" data-i18n="contact.desc">I'm currently open for new opportunities and collaborations. Feel free to reach out!</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <svg class="contact-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+                        <span>andrian.tmp@andriangilbert.my.id</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <span data-i18n="contact.location">Batam, Indonesia</span>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-right">
+                <h3 data-i18n="contact.connectTitle">Connect With Me</h3>
+                <div class="contact-buttons">
+                    <a href="https://www.linkedin.com/in/andrian-gilbert-tampubolon-586462338/" class="contact-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        LinkedIn
+                    </a>
+                    <a href="https://www.instagram.com/tokisaki_ian?igsh=MXhiNzlpdGVpZG9uaw==" class="contact-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        Instagram
+                    </a>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Projects -->
-    <section class="projects" id="projects">
-        <div class="projects-container">
-            <div class="section-header">
-                <span class="section-label">Featured Work</span>
-                <h2 class="section-title">Projects I'm proud of</h2>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-icon">🛡️</div>
-                    <h3>Enterprise DRC & Colocation Backup System</h3>
-                    <p>
-                        Designed and implemented an enterprise Disaster Recovery Center (DRC) architecture 
-                        combining local and multi-location backups with inter-data-center colocation. Deployed a
-                        dedicated backup server in a separate data center and established secure inter-DC
-                        connectivity using Mikrotik over a private network for data replication and high availability.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">Proxmox</span>
-                        <span class="tag">TrueNAS</span>
-                        <span class="tag">RAID 5</span>
-                        <span class="tag">Site-to-Site Connectivity</span>
-                        <span class="tag">Mikrotik RouterOS</span>
-                        <span class="tag">DR Failover</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-icon">📊</div>
-                    <h3>Data Center Monitoring System</h3>
-                    <p>
-                        Implemented a comprehensive monitoring solution using Zabbix with Discord and email
-                        notifications for real-time alerts, ensuring prompt response to system issues.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">Zabbix</span>
-                        <span class="tag">Discord</span>
-                        <span class="tag">Email Alerts</span>
-                        <span class="tag">Linux</span>
-                        <span class="tag">Monitoring</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-icon">🖥️</div>
-                    <h3>Virtualization Cluster Setup</h3>
-                    <p>
-                        Designed and implemented a Proxmox virtualization cluster with multiple
-                        nodes for optimized resource allocation and high availability.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">Proxmox VE</span>
-                        <span class="tag">Cluster</span>
-                        <span class="tag">Virtualization</span>
-                        <span class="tag">Webmail</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<footer>
+    <div class="footer-content">
+        <p style="color:var(--text-secondary);" data-i18n="footer.copy">© 2026 Andrian Gilbert Tampubolon · Updated May 2026</p>
+    </div>
+</footer>
 
-    <!-- Contact -->
-   <section class="contact" id="contact">
-        <div class="contact-wrapper">
-            <div class="contact-header">
-                <span class="section-label">CONTACT</span>
-                <h2>Get In Touch</h2>
-            </div>
-            <div class="contact-box">
-                <div class="contact-left">
-                    <p class="contact-description">
-                        I'm currently open for new opportunities and collaborations. Feel free to reach out!
-                    </p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <svg class="contact-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="2" y="4" width="20" height="16" rx="2"/>
-                                <path d="m2 7 10 6 10-6"/>
-                            </svg>
-                            <span>andrian.tmp@gmail.com</span>
-                        </div>
-                        <div class="contact-item">
-                            <svg class="contact-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                                <circle cx="12" cy="10" r="3"/>
-                            </svg>
-                            <span>Batam, Indonesia</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-right">
-                    <h3>Connect With Me</h3>
-                    <div class="contact-buttons">
-                        <a href="https://www.linkedin.com/in/andrian-gilbert-tampubolon-586462338/" class="contact-btn">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                            </svg>
-                            LinkedIn
-                        </a>
-                        <a href="https://www.instagram.com/tokisaki_ian?igsh=MXhiNzlpdGVpZG9uaw==" class="contact-btn">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                            </svg>
-                            Instagram
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<script>
+const translations = {
+    en: {
+        "nav.about": "About", "nav.experience": "Experience", "nav.work": "Work",
+        "nav.certificates": "Certificates", "nav.skills": "Skills", "nav.contact": "Contact", "nav.cta": "Let's Talk",
+        "hero.badge": "Open to new positions",
+        "hero.title": "Data Center Engineer",
+        "hero.gradientText": "Designing resilient infrastructure",
+        "hero.fromTo": "from physical to virtual.",
+        "hero.desc": "Skilled at designing data center facilities— from room layout and power distribution to structured cabling—ensuring physical infrastructure seamlessly aligns with server, network, and virtualization needs for reliable, scalable, and efficient operations.",
+        "hero.viewWork": "View My Work", "hero.getInTouch": "Get In Touch",
+        "about.label": "About Me",
+        "about.title": "Making infrastructure reliable and well-structured.",
+        "about.p1": "Hi! I'm Andrian Gilbert Tampubolon, a Server & Network Engineer with hands-on experience in designing, deploying, and maintaining robust IT infrastructure. I specialize in Linux server administration, network engineering, virtualization, and data center operations — ensuring systems run reliably, securely, and efficiently.",
+        "about.p2": "I have implemented enterprise-level backup and disaster recovery solutions, built virtualization clusters, and designed structured infrastructure that supports business continuity and long-term scalability.",
+        "about.p3": "Beyond daily operations, I continuously explore cloud computing, AI technologies, and network automation to improve system performance and operational efficiency.",
+        "about.skill1": "System Administration", "about.skill2": "Data Center Facility & Infrastructure",
+        "about.skill3": "Network Engineering", "about.skill4": "Cloud Computing",
+        "about.stat1": "Projects Completed", "about.stat2": "Year IT Experience",
+        "about.stat3": "Certifications Earned", "about.stat4": "DRC System Built",
+        "exp.label": "Experience", "exp.title": "Where I've worked",
+        "exp.job1.title": "Server & Network Engineer",
+        "exp.job1.desc": "Managing data center infrastructure, Linux servers, and network systems. Deployed enterprise-grade backup and disaster recovery solutions and implemented real-time monitoring with Zabbix integrated to Discord and email notifications to minimize downtime and ensure operational stability.",
+        "exp.job2.title": "TKJ Internship",
+        "exp.job2.desc": "Built and managed IT infrastructure including webmail systems, Zabbix monitoring, domain hosting, and Proxmox virtualization. Created nodes and clusters for optimized resource allocation and system reliability.",
+        "cert.label": "Certifications", "cert.title": "Professional credentials",
+        "cert.c1.title": "Belajar Dasar Cloud dan Gen AI di AWS",
+        "cert.c1.date": "Issued: Oct 2025 · Expires: Oct 2028",
+        "cert.c1.desc": "Covers AWS core services including EC2, S3, VPC, IAM, CloudWatch, and generative AI fundamentals on AWS — from cloud computing basics to migration strategies and the Well-Architected Framework.",
+        "cert.c2.title": "Belajar Dasar AI",
+        "cert.c2.date": "Issued: 2025",
+        "cert.c2.desc": "Covers AI and machine learning fundamentals including supervised and unsupervised learning, deep learning, neural networks, and practical data preparation for AI development.",
+        "cert.c3.title": "OCI 2025 Certified AI Foundations Associate",
+        "cert.c3.date": "Issued: Oct 2025 · Expires: Oct 2027",
+        "cert.c3.desc": "Foundational certification covering AI and ML concepts on Oracle Cloud Infrastructure, including generative AI, large language models (LLMs), CNNs, RNNs, and OCI AI services.",
+        "cert.c4.title": "Certified UKK IDUKA",
+        "cert.c4.date": "Issued: Feb 2025",
+        "cert.c4.desc": "Technical competency certification in data center management and enterprise virtualization using Proxmox VE, covering cluster deployment, node management, and infrastructure optimization.",
+        "cert.viewLink": "View Credential →",
+        "skills.label": "Skills", "skills.title": "What I work with",
+        "skills.cat1": "Infrastructure & Server", "skills.cat2": "Network",
+        "skills.cat3": "Monitoring & Recovery", "skills.cat4": "Cloud",
+        "skills.more": "Want to see all my skills?", "skills.linkedinBtn": "View all on LinkedIn",
+        "proj.label": "Featured Work", "proj.title": "Projects I'm proud of",
+        "proj.p1.title": "Enterprise DRC & Colocation Backup System",
+        "proj.p1.desc": "Engineered a multi-location DRC architecture featuring secure MikroTik inter-DC connectivity and Proxmox virtualization. This system ensures stable data replication and High Availability with a resilient failover mechanism to guarantee uninterrupted business continuity.",
+        "proj.p2.title": "Data Center Monitoring System",
+        "proj.p2.desc": "Implemented a comprehensive monitoring solution using Zabbix with Discord and email notifications for real-time alerts, ensuring prompt response to system issues.",
+        "proj.p3.title": "Enterprise Virtualization Infrastructure Implementation",
+        "proj.p3.desc": "Performed server hardware upgrades, initialized Proxmox VE nodes, and deployed a virtualization cluster with centralized resource management and high availability configuration.",
+        "proj.p4.title": "Hybrid DRC & HA Miniaturization",
+        "proj.p4.desc": "Engineered a resilient hybrid DRC and High-Availability (HA) proof-of-concept bridging bare-metal infrastructure with Cloud VPS. Implemented MikroTik CHR with secure tunneling (WireGuard + EoIP) to bypass NAT constraints, utilizing Nginx Proxy Manager for traffic distribution and Syncthing for real-time Docker data replication. Features automated failover mechanism to guarantee 24/7 service continuity.",
+        "contact.label": "CONTACT", "contact.title": "Get In Touch",
+        "contact.desc": "I'm currently open for new opportunities and collaborations. Feel free to reach out!",
+        "contact.location": "Batam, Indonesia", "contact.connectTitle": "Connect With Me",
+        "footer.copy": "© 2026 Andrian Gilbert Tampubolon · Updated May 2026"
+    },
+    id: {
+        "nav.about": "Tentang", "nav.experience": "Pengalaman", "nav.work": "Pekerjaan",
+        "nav.certificates": "Sertifikat", "nav.skills": "Keahlian", "nav.contact": "Kontak", "nav.cta": "Hubungi Saya",
+        "hero.badge": "Terbuka untuk posisi baru",
+        "hero.title": "Data Center Engineer",
+        "hero.gradientText": "Merancang infrastruktur yang tangguh",
+        "hero.fromTo": "dari fisik ke virtual.",
+        "hero.desc": "Berpengalaman langsung dalam merancang dan merencanakan fasilitas serta infrastruktur pusat data, termasuk tata letak ruangan, penempatan rack, distribusi daya, sistem pendingin, dan structured cabling. Terampil dalam menyelaraskan infrastruktur fisik dengan kebutuhan server, jaringan, dan virtualisasi untuk operasional yang andal, efisien, dan skalabel.",
+        "hero.viewWork": "Lihat Pekerjaan Saya", "hero.getInTouch": "Hubungi Saya",
+        "about.label": "Tentang Saya",
+        "about.title": "Menjadikan infrastruktur lebih terpercaya dan rapi.",
+        "about.p1": "Halo! Saya Andrian Gilbert Tampubolon, seorang Server & Network Engineer dengan pengalaman langsung dalam merancang, men-deploy, dan memelihara infrastruktur IT yang kuat. Saya spesialis dalam administrasi server Linux, rekayasa jaringan, virtualisasi, dan operasional pusat data — memastikan sistem berjalan andal, aman, dan efisien.",
+        "about.p2": "Saya telah mengimplementasikan solusi backup dan pemulihan bencana tingkat enterprise, membangun kluster virtualisasi, dan merancang infrastruktur terstruktur yang mendukung kelangsungan bisnis dan skalabilitas jangka panjang.",
+        "about.p3": "Di luar operasional harian, saya terus mengeksplorasi komputasi awan, teknologi AI, dan otomasi jaringan untuk meningkatkan kinerja sistem dan efisiensi operasional.",
+        "about.skill1": "Administrasi Sistem", "about.skill2": "Fasilitas & Infrastruktur Pusat Data",
+        "about.skill3": "Rekayasa Jaringan", "about.skill4": "Komputasi Awan",
+        "about.stat1": "Proyek Selesai", "about.stat2": "Tahun Pengalaman IT",
+        "about.stat3": "Sertifikasi Diraih", "about.stat4": "Sistem DRC Dibangun",
+        "exp.label": "Pengalaman", "exp.title": "Tempat saya pernah bekerja",
+        "exp.job1.title": "Server & Network Engineer",
+        "exp.job1.desc": "Mengelola infrastruktur pusat data, server Linux, dan sistem jaringan. Men-deploy solusi backup dan pemulihan bencana tingkat enterprise serta mengimplementasikan pemantauan real-time dengan Zabbix yang terintegrasi ke Discord dan notifikasi email untuk meminimalkan downtime dan memastikan stabilitas operasional.",
+        "exp.job2.title": "Magang TKJ",
+        "exp.job2.desc": "Membangun dan mengelola infrastruktur IT termasuk sistem webmail, monitoring Zabbix, hosting domain, dan virtualisasi Proxmox. Membuat node dan kluster untuk alokasi sumber daya yang optimal dan keandalan sistem.",
+        "cert.label": "Sertifikasi", "cert.title": "Kredensial profesional",
+        "cert.c1.title": "Belajar Dasar Cloud dan Gen AI di AWS",
+        "cert.c1.date": "Diterbitkan: Okt 2025 · Berlaku s/d: Okt 2028",
+        "cert.c1.desc": "Mencakup layanan inti AWS termasuk EC2, S3, VPC, IAM, CloudWatch, dan dasar-dasar generative AI di AWS — dari konsep cloud computing hingga strategi migrasi dan Well-Architected Framework.",
+        "cert.c2.title": "Belajar Dasar AI",
+        "cert.c2.date": "Diterbitkan: 2025",
+        "cert.c2.desc": "Mencakup dasar-dasar AI dan machine learning termasuk supervised dan unsupervised learning, deep learning, neural network, serta persiapan data untuk pengembangan AI.",
+        "cert.c3.title": "OCI 2025 Certified AI Foundations Associate",
+        "cert.c3.date": "Diterbitkan: Okt 2025 · Berlaku s/d: Okt 2027",
+        "cert.c3.desc": "Sertifikasi foundational yang mencakup konsep AI dan ML di Oracle Cloud Infrastructure, termasuk generative AI, large language models (LLM), CNN, RNN, dan layanan OCI AI.",
+        "cert.c4.title": "Certified UKK IDUKA",
+        "cert.c4.date": "Diterbitkan: Feb 2025",
+        "cert.c4.desc": "Sertifikasi kompetensi teknis dalam manajemen pusat data dan virtualisasi enterprise menggunakan Proxmox VE, mencakup deployment kluster, manajemen node, dan optimasi infrastruktur.",
+        "cert.viewLink": "Lihat Kredensial →",
+        "skills.label": "Keahlian", "skills.title": "Yang saya kuasai",
+        "skills.cat1": "Infrastruktur & Server", "skills.cat2": "Jaringan",
+        "skills.cat3": "Monitoring & Recovery", "skills.cat4": "Cloud",
+        "skills.more": "Ingin lihat semua keahlian saya?", "skills.linkedinBtn": "Lihat semua di LinkedIn",
+        "proj.label": "Karya Unggulan", "proj.title": "Proyek yang saya banggakan",
+        "proj.p1.title": "Sistem DRC & Backup Colocation Enterprise",
+        "proj.p1.desc": "Merancang arsitektur DRC multi-lokasi dengan konektivitas antar-DC MikroTik yang aman dan virtualisasi Proxmox. Sistem ini memastikan replikasi data yang stabil dan High Availability dengan mekanisme failover yang tangguh untuk menjamin kelangsungan bisnis tanpa gangguan.",
+        "proj.p2.title": "Sistem Monitoring Pusat Data",
+        "proj.p2.desc": "Mengimplementasikan solusi monitoring komprehensif menggunakan Zabbix dengan notifikasi Discord dan email untuk peringatan real-time, memastikan respons cepat terhadap masalah sistem.",
+        "proj.p3.title": "Implementasi Infrastruktur Virtualisasi Enterprise",
+        "proj.p3.desc": "Melakukan upgrade hardware server, inisialisasi node Proxmox VE, dan deployment cluster virtualisasi untuk manajemen resource terpusat serta konfigurasi high availability.",
+        "proj.p4.title": "Hybrid DRC & HA Miniaturization",
+        "proj.p4.desc": "Merancang proof-of-concept (PoC) arsitektur DRC dan High-Availability (HA) hibrida yang menghubungkan infrastruktur homelab dengan Cloud VPS. Mengimplementasikan MikroTik CHR dan tunneling aman (WireGuard + EoIP) untuk menembus batasan NAT, menggunakan Nginx Proxy Manager untuk distribusi trafik, serta Syncthing untuk replikasi data Docker secara real-time. Dilengkapi mekanisme failover otomatis untuk menjamin kontinuitas layanan 24/7.",
+        "contact.label": "KONTAK", "contact.title": "Hubungi Saya",
+        "contact.desc": "Saya saat ini terbuka untuk peluang dan kolaborasi baru. Jangan ragu untuk menghubungi saya!",
+        "contact.location": "Batam, Indonesia", "contact.connectTitle": "Terhubung Dengan Saya",
+        "footer.copy": "© 2026 Andrian Gilbert Tampubolon · Updated May 2026"
+    }
+};
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <p style="color: var(--text-secondary);">© 2025 Andrian Gilbert Tampubolon.</p>
-        </div>
-    </footer>
+let currentLang = localStorage.getItem('lang') || 'en';
+let currentTheme = localStorage.getItem('theme') || 'dark';
 
-    <script>
-        // Hamburger Menu Toggle
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('navMenu');
-        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-        const navLinks = document.querySelectorAll('.nav-menu a');
+function applyTheme(theme) {
+    if (theme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        document.getElementById('themeLabel').textContent = currentLang === 'en' ? 'Dark' : 'Gelap';
+        document.getElementById('themeIcon').innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+    } else {
+        document.documentElement.removeAttribute('data-theme');
+        document.getElementById('themeLabel').textContent = currentLang === 'en' ? 'Light' : 'Terang';
+        document.getElementById('themeIcon').innerHTML = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+    }
+}
 
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-            mobileMenuOverlay.classList.toggle('active');
-            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+function applyLang(lang) {
+    const t = translations[lang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key] !== undefined) el.textContent = t[key];
+    });
+    document.getElementById('langLabel').textContent = lang === 'en' ? 'ID' : 'EN';
+    document.documentElement.lang = lang;
+    const themeLabel = document.getElementById('themeLabel');
+    if (currentTheme === 'light') {
+        themeLabel.textContent = lang === 'en' ? 'Dark' : 'Gelap';
+    } else {
+        themeLabel.textContent = lang === 'en' ? 'Light' : 'Terang';
+    }
+}
+
+applyTheme(currentTheme);
+applyLang(currentLang);
+
+document.getElementById('themeToggle').addEventListener('click', () => {
+    currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    localStorage.setItem('theme', currentTheme);
+    applyTheme(currentTheme);
+});
+document.getElementById('langToggle').addEventListener('click', () => {
+    currentLang = currentLang === 'en' ? 'id' : 'en';
+    localStorage.setItem('lang', currentLang);
+    applyLang(currentLang);
+});
+
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('navMenu');
+const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+const navLinks = document.querySelectorAll('.nav-menu a');
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+    mobileMenuOverlay.classList.toggle('active');
+    document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+});
+mobileMenuOverlay.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navMenu.classList.remove('active');
+    mobileMenuOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+});
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+        mobileMenuOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+});
+
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.pageYOffset > 100); });
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+});
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; }
+    });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.project-card, .stat-card').forEach(el => {
+    el.style.opacity = '0'; el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+});
+
+const canvas = document.getElementById('particlesCanvas');
+const ctx = canvas.getContext('2d');
+let particles = [], mouseX = 0, mouseY = 0;
+canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; initParticles(); });
+document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+
+class Particle {
+    constructor() { this.x = Math.random()*canvas.width; this.y = Math.random()*canvas.height; this.size = Math.random()*2+1; this.speedX = Math.random()*1-0.5; this.speedY = Math.random()*1-0.5; this.opacity = Math.random()*0.5+0.2; }
+    update() {
+        this.x += this.speedX; this.y += this.speedY;
+        const dx = mouseX-this.x, dy = mouseY-this.y, dist = Math.sqrt(dx*dx+dy*dy);
+        if (dist < 150) { const force = (150-dist)/150; this.x -= (dx/dist)*force*3; this.y -= (dy/dist)*force*3; }
+        if (this.x > canvas.width) this.x = 0; if (this.x < 0) this.x = canvas.width;
+        if (this.y > canvas.height) this.y = 0; if (this.y < 0) this.y = canvas.height;
+    }
+    draw() {
+        const isDark = currentTheme === 'dark';
+        ctx.fillStyle = isDark ? `rgba(59,130,246,${this.opacity})` : `rgba(37,99,235,${this.opacity*0.5})`;
+        ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI*2); ctx.fill();
+    }
+}
+
+function initParticles() { particles = []; const n = Math.floor((canvas.width*canvas.height)/12000); for (let i=0;i<n;i++) particles.push(new Particle()); }
+function connectParticles() {
+    const isDark = currentTheme === 'dark';
+    for (let i=0;i<particles.length;i++) for (let j=i+1;j<particles.length;j++) {
+        const dx=particles[i].x-particles[j].x, dy=particles[i].y-particles[j].y, dist=Math.sqrt(dx*dx+dy*dy);
+        if (dist < 120) { const op=(120-dist)/120*(isDark?0.3:0.15); ctx.strokeStyle=isDark?`rgba(59,130,246,${op})`:`rgba(37,99,235,${op})`; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(particles[i].x,particles[i].y); ctx.lineTo(particles[j].x,particles[j].y); ctx.stroke(); }
+    }
+}
+function animate() { ctx.clearRect(0,0,canvas.width,canvas.height); particles.forEach(p=>{p.update();p.draw();}); connectParticles(); requestAnimationFrame(animate); }
+initParticles(); animate();
+
+// CAROUSEL
+function initCarousel(carousel) {
+    const track = carousel.querySelector('.carousel-track');
+    const imgs = track.querySelectorAll('img');
+    const dotsContainer = carousel.querySelector('.carousel-dots');
+    const btnPrev = carousel.querySelector('.carousel-btn.prev');
+    const btnNext = carousel.querySelector('.carousel-btn.next');
+    let current = 0;
+    const total = imgs.length;
+
+    // Build dots
+    dotsContainer.innerHTML = '';
+    imgs.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        dot.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(dot);
+    });
+
+    // Hide dots if only 1 image
+    if (total <= 1) { btnPrev.style.display = 'none'; btnNext.style.display = 'none'; dotsContainer.style.display = 'none'; return; }
+
+    function update() {
+        track.style.transform = `translateX(-${current * 100}%)`;
+        dotsContainer.querySelectorAll('.carousel-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+        btnPrev.classList.toggle('hidden', current === 0);
+        btnNext.classList.toggle('hidden', current === total - 1);
+    }
+
+    function goTo(idx) { current = idx; update(); }
+
+    btnPrev.addEventListener('click', e => { e.stopPropagation(); if (current > 0) goTo(current - 1); });
+    btnNext.addEventListener('click', e => { e.stopPropagation(); if (current < total - 1) goTo(current + 1); });
+
+    // Swipe support
+    let startX = 0;
+    carousel.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+    carousel.addEventListener('touchend', e => {
+        const diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) { if (diff > 0 && current < total - 1) goTo(current + 1); else if (diff < 0 && current > 0) goTo(current - 1); }
+    });
+
+    update();
+}
+
+document.querySelectorAll('.carousel').forEach(initCarousel);
+
+// IMAGE ZOOM/LIGHTBOX MODAL
+const imageModal = document.getElementById('imageModal');
+const imageModalImg = document.getElementById('imageModalImg');
+const imageModalClose = document.getElementById('imageModalClose');
+const imageModalPrev = document.getElementById('imageModalPrev');
+const imageModalNext = document.getElementById('imageModalNext');
+const imageModalCounter = document.getElementById('imageModalCounter');
+
+let allCarouselImages = [];
+let currentImageIndex = 0;
+
+// Collect all carousel images
+function collectAllCarouselImages() {
+    allCarouselImages = [];
+    document.querySelectorAll('.carousel-track img').forEach(img => {
+        allCarouselImages.push({
+            src: img.src,
+            alt: img.alt,
+            element: img
         });
+    });
+}
 
-        mobileMenuOverlay.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-            mobileMenuOverlay.classList.remove('active');
-            document.body.style.overflow = '';
+// Initialize image modal on carousel init
+function setupImageZoom(carousel) {
+    const images = carousel.querySelectorAll('.carousel-track img');
+    images.forEach(img => {
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', (e) => {
+            e.stopPropagation();
+            collectAllCarouselImages();
+            currentImageIndex = Array.from(allCarouselImages).findIndex(item => item.src === img.src);
+            openImageModal();
         });
+    });
+}
 
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-                mobileMenuOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        });
+function openImageModal() {
+    if (allCarouselImages.length === 0) return;
+    imageModalImg.src = allCarouselImages[currentImageIndex].src;
+    imageModalImg.alt = allCarouselImages[currentImageIndex].alt;
+    imageModal.classList.add('active');
+    updateModalNavigation();
+    document.body.style.overflow = 'hidden';
+}
 
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        let lastScroll = 0;
+function closeImageModal() {
+    imageModal.classList.remove('active');
+    document.body.style.overflow = '';
+}
 
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-            
-            lastScroll = currentScroll;
-        });
+function updateModalNavigation() {
+    imageModalCounter.textContent = `${currentImageIndex + 1} / ${allCarouselImages.length}`;
+    imageModalPrev.classList.toggle('hidden', currentImageIndex === 0);
+    imageModalNext.classList.toggle('hidden', currentImageIndex === allCarouselImages.length - 1);
+}
 
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+function showPrevImage() {
+    if (currentImageIndex > 0) {
+        currentImageIndex--;
+        openImageModal();
+    }
+}
 
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+function showNextImage() {
+    if (currentImageIndex < allCarouselImages.length - 1) {
+        currentImageIndex++;
+        openImageModal();
+    }
+}
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
+// Event listeners
+imageModalClose.addEventListener('click', closeImageModal);
+imageModalPrev.addEventListener('click', (e) => { e.stopPropagation(); showPrevImage(); });
+imageModalNext.addEventListener('click', (e) => { e.stopPropagation(); showNextImage(); });
 
-        // Observe elements
-        document.querySelectorAll('.project-card, .stat-card').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
+// Close on background click
+imageModal.addEventListener('click', (e) => {
+    if (e.target === imageModal) closeImageModal();
+});
 
-        // PARTICLES ANIMATION
-        const canvas = document.getElementById('particlesCanvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        let mouseX = 0;
-        let mouseY = 0;
+// Close on ESC key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && imageModal.classList.contains('active')) {
+        closeImageModal();
+    }
+    if (imageModal.classList.contains('active')) {
+        if (e.key === 'ArrowLeft') showPrevImage();
+        if (e.key === 'ArrowRight') showNextImage();
+    }
+});
 
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            initParticles();
-        });
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2 + 1;
-                this.speedX = Math.random() * 1 - 0.5;
-                this.speedY = Math.random() * 1 - 0.5;
-                this.opacity = Math.random() * 0.5 + 0.2;
-            }
-
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-
-                const dx = mouseX - this.x;
-                const dy = mouseY - this.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                
-                if (distance < 150) {
-                    const force = (150 - distance) / 150;
-                    this.x -= (dx / distance) * force * 3;
-                    this.y -= (dy / distance) * force * 3;
-                }
-
-                if (this.x > canvas.width) this.x = 0;
-                if (this.x < 0) this.x = canvas.width;
-                if (this.y > canvas.height) this.y = 0;
-                if (this.y < 0) this.y = canvas.height;
-            }
-
-            draw() {
-                ctx.fillStyle = `rgba(59, 130, 246, ${this.opacity})`;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        function initParticles() {
-            particles = [];
-            const numberOfParticles = Math.floor((canvas.width * canvas.height) / 12000);
-            for (let i = 0; i < numberOfParticles; i++) {
-                particles.push(new Particle());
-            }
-        }
-
-        function connectParticles() {
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-
-                    if (distance < 120) {
-                        const opacity = (120 - distance) / 120 * 0.3;
-                        ctx.strokeStyle = `rgba(59, 130, 246, ${opacity})`;
-                        ctx.lineWidth = 1;
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(particle => {
-                particle.update();
-                particle.draw();
-            });
-            connectParticles();
-            requestAnimationFrame(animate);
-        }
-
-        initParticles();
-        animate();
-    </script>
+// Setup zoom for all carousels
+document.querySelectorAll('.carousel').forEach(carousel => {
+    setupImageZoom(carousel);
+});
+</script>
 </body>
 </html>
